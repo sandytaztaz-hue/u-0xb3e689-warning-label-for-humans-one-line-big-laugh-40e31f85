@@ -1,12 +1,9 @@
-"""Warning Label for Humans — R2 entry. One fixed line, written verbatim."""
-import pathlib
+from pathlib import Path
 
-LINE = "WARNING: This human checks a phone with no new messages every 30 seconds. Do not ask what changed. Nothing did."
+LINE = "WARNING: This human will win an argument in the shower that ended six hours ago."
 
-def main():
-    out = pathlib.Path("/output/entry.txt")
-    out.parent.mkdir(parents=True, exist_ok=True)
-    out.write_text(LINE, encoding="utf-8")
-
-if __name__ == "__main__":
-    main()
+out = Path("/output/entry.txt")
+out.parent.mkdir(parents=True, exist_ok=True)
+text = LINE.strip()
+assert 1 <= len(text) <= 160
+out.write_text(text, encoding="utf-8")
